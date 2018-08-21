@@ -1,0 +1,6 @@
+{
+  "testRegex": "(/test/.*\\.test.js)$",
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
+  }
+}
