@@ -2,7 +2,7 @@
 
 在使用 redux 时，要写大量模版代码，开发效率较低。实际开发过程中，有非常多的 reducer 和 action 是为了改变 state 中的一个值。本工具提供一个替换 action，dispatch 这个 action 后可直接改变 state 中的特定 值。本工具在不影响 redux 可预测性的基础上，大大精减了项目的代码。
 除此之外，本工具特别容易使用，必须掌握的 API 只有两个简单的函数。
-
+[![Build Status](https://travis-ci.org/ymrdf/redux-simplifier.svg?branch=master)]
 [![npm version](https://img.shields.io/npm/v/redux-simplifier.svg?style=flat-square)](https://www.npmjs.com/package/redux)
 
 [![npm](https://img.shields.io/npm/dm/redux-simplifier.svg)](https://www.npmjs.com/package/redux-simplifier)
