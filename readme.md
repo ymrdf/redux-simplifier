@@ -1,5 +1,8 @@
 # redux-simplifier
 
+[![Build Status](https://travis-ci.org/ymrdf/redux-simplifier.svg?branch=master)](https://travis-ci.org/ymrdf/redux-simplifier)
+[![npm](https://img.shields.io/npm/v/redux-simplifier.svg)](https://www.npmjs.com/package/redux-simplifier)[![npm](https://img.shields.io/npm/dm/redux-simplifier.svg)](https://www.npmjs.com/package/redux-simplifier)
+
 Using redux needs lot's of boilerplate codes,it's very inefficient.Most of reducers and actions are used to replace a value in state. This tool provide a replace action, which will change the value after being dispatched without a reduc er. So, this tool can greatly simplify you code without affect the redux's predictable.
 Besides, this tool is very easy to use, you just need to know two simply function.
 
