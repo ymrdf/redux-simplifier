@@ -1,6 +1,6 @@
 # redux-simplifier
 
-Using redux needs lot's of boilerplate codes,it's very inefficient.Most of reducers and actions are used to replace a value in state. This tool provide a replace action, which will change the value after being dispatched without a reduc er. So, this tool can greatly simplify you code without affect the redux's predictable.
+Using redux needs lot's of boilerplate codes,it's very inefficient.Most of reducers and actions are used to replace a value in state. This tool provide a replace action, which will change the value after being dispatched without a reduc er. So, this tool can greatly simplify you code without affect the redux's predictable.
 Besides, this tool is very easy to use, you just need to know two simply function.
 
 [中文](./readme-zh.md)
@@ -54,19 +54,19 @@ store.dispatch(replaceAction("number", 1));
 
 ---
 
-A action creator，return a ation like this：
+A action creator, return a ation like this：
 {
-type:actionType.TYPE,
+type:actionType.TYPE,
 tag:tag,
 playload:value
 }
-@param {String} tag is a symbol, to mark the state you want to be replace. "a.b" mean state.a.b will be replaced。
-@param {any} value mean the new value you want to replace。
+@param {String} tag is a symbol, to mark the state you want to be replace. "a.b" mean state.a.b will be replaced。
+@param {any} value mean the new value you want to replace。
 
 #### EXAMPLE
 
 ```
-  store.dispacth(replaceAction('infor.text', 'new value'));
+  store.dispacth(replaceAction('infor.text', 'new value'));
 ```
 
 ### function combineReducers(reducers)
@@ -75,12 +75,12 @@ playload:value
 
 Enhance redux combineReducers funtion. When one of reducers's value isn't a function, make the value to be init value of the state.
 @param {Object} reducers: An object like redux reducers object, but when it's values are not function, the value will
-be part of the init state; So that we can replace the values when use replace action;
+be part of the init state; So that we can replace the values when use replace action.
 
 #### EXAMPLE
 
 ```
-  const reducer = combineReducers({
+  const reducer = combineReducers({
     number: onAddOne,
     infor: { text: 'text' }
   });
@@ -103,7 +103,7 @@ Sometimes you don't like to use replaceAction:
 
 ```
   import { actionType } from 'redux-simplifier';
-  import store from './store';
+  import store from './store';
 
   store.dispatch({
     type:actionType.TYPE,
