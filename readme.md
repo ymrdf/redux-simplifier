@@ -20,44 +20,45 @@ $ yarn add redux-simplifier
 ## Usage
 
 ```js
-import { createStore, combineReducers, replaceAction } from 'redux-simplifier';
+import { createStore, combineReducers, replaceAction } from "redux-simplifier";
 
 const onAddOne = (state = 0, action) => {
-  switch (action.type){
-  case 'add':
-    return state + action.playLoad;
-  default:
-    return state;
+  switch (action.type) {
+    case "add":
+      return state + action.playLoad;
+    default:
+      return state;
   }
 };
 
 const reducer = combineReducers({
   number: onAddOne,
-  infor: { text: 'text' }
+  infor: { text: "text" }
 });
 
 const store = createStore(reducer);
 
-store.dispatch(replaceAction('infor.text', 'new text'));
-store.dispatch(replaceAction('number', 1));
+store.dispatch(replaceAction("infor.text", "new text"));
+store.dispatch(replaceAction("number", 1));
 
 //get new state:
 // {
 //   number: 1,
 //   infor: { text: 'new text'}
 // }
-
 ```
 
 ## must know API
 
 ### function replaceAction(tag, value)
+
 ---
+
 A action creator，return a ation like this：
 {
-  type:actionType.TYPE,
-  tag:tag,
-  playload:value
+type:actionType.TYPE,
+tag:tag,
+playload:value
 }
 @param {String} tag is a symbol, to mark the state you want to be replace. "a.b" mean state.a.b will be replaced。
 @param {any} value mean the new value you want to replace。
@@ -69,8 +70,10 @@ A action creator，return a ation like this：
 ```
 
 ### function combineReducers(reducers)
+
 ---
-Enhance redux combineReducers funtion. When one of reducers's value isn't a function, make the value to be init value of the state. 
+
+Enhance redux combineReducers funtion. When one of reducers's value isn't a function, make the value to be init value of the state.
 @param {Object} reducers: An object like redux reducers object, but when it's values are not function, the value will
 be part of the init state; So that we can replace the values when use replace action;
 
@@ -84,14 +87,20 @@ be part of the init state; So that we can replace the values when use replace ac
 ```
 
 ## may need API
+
 ### object actionType
+
 ---
+
 This is an Object to manage replace-action type. Can be used to reset replace-action's type:
+
 ```
   import { actionType } from 'redux-simplifier';
   actionType.resetActionType('MY_REPLACE_TYPE')
 ```
+
 Sometimes you don't like to use replaceAction:
+
 ```
   import { actionType } from 'redux-simplifier';
   import store from './store';
@@ -102,5 +111,7 @@ Sometimes you don't like to use replaceAction:
     tag:tag
   });
 ```
+
 ## license
+
 MIT

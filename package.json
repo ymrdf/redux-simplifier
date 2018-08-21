@@ -23,6 +23,14 @@
     "lib",
     "dist"
   ],
+  "bugs": {
+    "url": "https://github.com/ymrdf/redux-simplifier/issues"
+  },
+  "homepage": "https://github.com/ymrdf/redux-simplifier",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ymrdf/redux-simplifier.git"
+  },
   "author": "ymrdf",
   "license": "MIT",
   "dependencies": {
