@@ -51,13 +51,13 @@ store.dispatch(replaceAction("number", 1));
 // }
 ```
 
-## must know API
+## must know API
 
 ### function replaceAction(tag, value)
 
 ---
 
-A action creator, return a ation like this：
+A action creator, return a ation like this：
 {
 type:actionType.TYPE,
 tag:tag,
@@ -66,7 +66,7 @@ playload:value
 @param {String} tag is a symbol, to mark the state you want to be replace. "a.b" mean state.a.b will be replaced。
 @param {any} value mean the new value you want to replace。
 
-#### EXAMPLE
+#### EXAMPLE
 
 ```
   store.dispacth(replaceAction('infor.text', 'new value'));
@@ -80,7 +80,7 @@ Enhance redux combineReducers funtion. When one of reducers's value isn't a func
 @param {Object} reducers: An object like redux reducers object, but when it's values are not function, the value will
 be part of the init state; So that we can replace the values when use replace action.
 
-#### EXAMPLE
+#### EXAMPLE
 
 ```
   const reducer = combineReducers({
@@ -89,9 +89,9 @@ be part of the init state; So that we can replace the values when use replace ac
   });
 ```
 
-## may need API
+## may need API
 
-### object actionType
+### object actionType
 
 ---
 
