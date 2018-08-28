@@ -89,7 +89,7 @@ be part of the init state; So that we can replace the values when use replace ac
   });
 ```
 
-## may need API
+## may need know API
 
 ### object actionType
 
@@ -113,6 +113,25 @@ Sometimes you don't like to use replaceAction:
     playload: value,
     tag:tag
   });
+```
+
+### other API
+---
+
+Below apis are the same with redux:
+
+* createStore
+* bindActionCreators
+* applyMiddleware
+* compose
+* __DO_NOT_USE__ActionTypes
+
+## run example
+
+```bash
+$ cd example
+$ npm install
+$ npm run start
 ```
 
 ## license
