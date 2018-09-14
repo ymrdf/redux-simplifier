@@ -21,7 +21,41 @@ $ yarn add redux-simplifier
 ```
 
 ## Usage
+There have two methods to use this tool, one is to enhance the function of redux,the other one is to replace redux;
 
+METHOD ONE：
+
+```js
+import { createStore } from 'redux';
+import { combineReducers, replaceAction, enhanceReducer } from "redux-simplifier";
+
+const onAddOne = (state = 0, action) => {
+  switch (action.type) {
+    case "add":
+      return state + action.playLoad;
+    default:
+      return state;
+  }
+};
+
+const reducer = combineReducers({
+  number: onAddOne,
+  infor: { text: "text" }
+});
+
+const store = createStore(enhanceReducer(reducer));
+
+store.dispatch(replaceAction("infor.text", "new text"));
+store.dispatch(replaceAction("number", 1));
+
+//get new state:
+// {
+//   number: 1,
+//   infor: { text: 'new text'}
+// }
+```
+
+METHOD TWO：
 ```js
 import { createStore, combineReducers, replaceAction } from "redux-simplifier";
 
@@ -51,7 +85,7 @@ store.dispatch(replaceAction("number", 1));
 // }
 ```
 
-## must know API
+## APIs
 
 ### function replaceAction(tag, value)
 
@@ -66,8 +100,6 @@ playload:value
 @param {String} tag is a symbol, to mark the state you want to be replace. "a.b" mean state.a.b will be replaced。
 @param {any} value mean the new value you want to replace。
 
-#### EXAMPLE
-
 ```
   store.dispacth(replaceAction('infor.text', 'new value'));
 ```
@@ -80,8 +112,6 @@ Enhance redux combineReducers funtion. When one of reducers's value isn't a func
 @param {Object} reducers: An object like redux reducers object, but when it's values are not function, the value will
 be part of the init state; So that we can replace the values when use replace action.
 
-#### EXAMPLE
-
 ```
   const reducer = combineReducers({
     number: onAddOne,
@@ -89,7 +119,16 @@ be part of the init state; So that we can replace the values when use replace ac
   });
 ```
 
-## may need know API
+### function enhanceReducer(reducer)
+
+---
+
+Enhance the root reducer, return a new reducer, make sure redux can handle the State replace actions.
+```
+  const finalReducer = enhanceReducer(reducer)
+```
+
+## not important API
 
 ### object actionType
 

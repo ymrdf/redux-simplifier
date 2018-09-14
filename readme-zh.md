@@ -5,6 +5,8 @@
 
 [![Build Status](https://travis-ci.org/ymrdf/redux-simplifier.svg?branch=master)](https://travis-ci.org/ymrdf/redux-simplifier)[![npm version](https://img.shields.io/npm/v/redux-simplifier.svg?style=flat-square)](https://www.npmjs.com/package/redux)[![npm](https://img.shields.io/npm/dm/redux-simplifier.svg)](https://www.npmjs.com/package/redux-simplifier)
 
+[ENGLISH](./readme.md)
+
 ## Installation
 
 ```bash
@@ -18,7 +20,40 @@ $ yarn add redux-simplifier
 ```
 
 ## Usage
+有两种使用方法，一种是增强redux的功能，一种是直接替换redux。
+方法一：
 
+```js
+import { createStore } from 'redux';
+import { combineReducers, replaceAction, enhanceReducer } from "redux-simplifier";
+
+const onAddOne = (state = 0, action) => {
+  switch (action.type) {
+    case "add":
+      return state + action.playLoad;
+    default:
+      return state;
+  }
+};
+
+const reducer = combineReducers({
+  number: onAddOne,
+  infor: { text: "text" }
+});
+
+const store = createStore(enhanceReducer(reducer));
+
+store.dispatch(replaceAction("infor.text", "new text"));
+store.dispatch(replaceAction("number", 1));
+
+//get new state:
+// {
+//   number: 1,
+//   infor: { text: 'new text'}
+// }
+```
+
+方法二：
 ```js
 import { createStore, combineReducers, replaceAction } from "redux-simplifier";
 
@@ -48,7 +83,7 @@ store.dispatch(replaceAction("number", 1));
 // }
 ```
 
-## must know API
+## APIs
 
 ### function replaceAction(tag, value)
 
@@ -62,8 +97,6 @@ playload:value
 }
 @param {String} tag 是一个标志符，能标记出需要修改的 state 的层级，如果"a.b", 就是要替换掉 state.a.b 的值。@param {any} value 是要替换的新值。
 
-#### EXAMPLE
-
 ```
   store.dispacth(replaceAction('infor.text', 'new value'));
 ```
@@ -75,8 +108,6 @@ playload:value
 对 redux 的 combineReducers 函数做了封装，使其参数对象的值可以是非函数，此时，这个值就是初始 state 的值。
 @param {Object} reducers: 一个对象，它的值是 reducer 函数或任意数据。为 reducer 函数时，此函数会成为最终 reducer 函数中的一部分，如果是数据，此数据会成为 state 的初始值。
 
-#### EXAMPLE
-
 ```
   const reducer = combineReducers({
     number: onAddOne,
@@ -84,7 +115,17 @@ playload:value
   });
 ```
 
-## may need API
+
+### function enhanceReducer(reducer)
+
+---
+
+增强reducer的功能，返回一个新的reducer, 使redux可以处理replaceAction。
+```
+  const finalReducer = enhanceReducer(reducer)
+```
+
+## not important API
 
 ### object actionType
 

@@ -1,9 +1,12 @@
 import {
-  createStore,
+  //createStore,
   combineReducers,
   actionType,
-  replaceAction
+  replaceAction,
+  enhanceReducer
 } from 'redux-simplifier';
+
+import { createStore } from 'redux';
 
 actionType.resetActionType('$REPLACE_ACTION');
 
@@ -32,4 +35,5 @@ export const test = () => {
   return replaceAction('aa.time', new Date().toLocaleString());
 };
 
-export default createStore(reducer, { number: 2 });
+export default createStore(enhanceReducer(reducer), { number: 2 });
+
